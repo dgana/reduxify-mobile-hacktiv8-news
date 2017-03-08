@@ -6,15 +6,29 @@ import {
   ScrollView,
 } from 'react-native';
 import { connect } from 'react-redux'
+import { fetchPeople } from '../../../actions'
+import { bindActionCreators } from 'redux'
 
-const PeopleList = props => {
-  return (
-    <ScrollView>
-      { props.people
-          .map((item, index) => <Text key={index} style={styles.peopleList}>{item.name}</Text>)
-      }
-    </ScrollView>
-  )
+console.log(fetchPeople);
+
+class PeopleList extends Component {
+  constructor(props){
+    super(props)
+  }
+
+  componentDidMount () {
+    this.props.fetchPeople()
+  }
+
+  render(){
+    return (
+      <ScrollView>
+        { this.props.people
+            .map((item, index) => <Text key={index} style={styles.peopleList}>{item.author}</Text>)
+        }
+      </ScrollView>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -35,4 +49,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(PeopleList)
+const mapDispatchToProps = (dispatch) => {
+  // fetchPeople: () => dispatch(fetchPeople())
+  return bindActionCreators({fetchPeople}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PeopleList)

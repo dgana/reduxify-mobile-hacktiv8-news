@@ -4,10 +4,12 @@ import {
   Navigator,
 } from 'react-native';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import rootReducers from './reducers'
+import thunk from 'redux-thunk'
 
-const store = createStore(rootReducers)
+const middleware = applyMiddleware(thunk)(createStore)
+const store = middleware(rootReducers)
 
 import News from './components/News'
 import People from './components/People'
