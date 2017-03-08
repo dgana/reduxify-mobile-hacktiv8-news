@@ -8,7 +8,7 @@ import {
 const Footer = () => {
   return (
     <View style={styles.footer}>
-      <Text></Text>
+      <Text style={{fontSize:12}}>Made by Ida Bagus Chahya Dhegana</Text>
     </View>
   )
 }
@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
   footer: {
     flex: 0.5,
     alignItems: 'center',
-    backgroundColor: 'slategray',
+    backgroundColor: 'gray',
+    justifyContent: 'center'
   }
 })
 

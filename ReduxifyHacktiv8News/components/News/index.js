@@ -4,8 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
 } from 'react-native';
+import { Button, Icon } from 'native-base';
 
 import Header from './Header'
 import Contents from './Contents'
@@ -16,8 +16,16 @@ export default class News extends Component {
     return (
       <View style={styles.container}>
         <Header />
-        <Button onPress={this.props.back} title="back" />
-        <Button onPress={this.props.goToPeople} title="people" />
+
+        <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', padding: 10,}}>
+          <Button onPress={this.props.back} light block style={{width: '48%'}} >
+            <Text>Back</Text>
+          </Button>
+          <Button onPress={this.props.goToPeople} light block style={{width: '48%'}} >
+            <Text>People</Text>
+          </Button>
+        </View>
+        
         <Contents />
         <Footer />
       </View>
@@ -28,5 +36,8 @@ export default class News extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  inline: {
+    flexDirection:'row',
   }
 });
